@@ -59,23 +59,30 @@ for (let i = 0; i < 550; i++) {
     grid_layer.innerHTML += squarediv;
 }
 
-function workBoxEle(title, tags, work, ss) {
-    if (ss == "0") {
-        ss = "loading.gif";
+function workBoxEle(p) {
+    if (p.ss == "0") {
+        p.ss = "loading.gif";
     }
-    let arr_tags = tags.map((tag) => {
+
+    let urlbtn = `" onclick="window.open('${p.url}')">Goto <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
+    if (p.url == "NA") {
+        urlbtn = ` disable-goto">Private Product <i class="fa-solid fa-lock"></i>`;
+    }
+
+    let arr_tags = p.tags.map((tag) => {
         return `<span class="skill">${tag}</span>`;
     }).join(" / ");
 
     let work_box_ele = `<div><div class="work-box">
                                 <div>
-                                    <h3 class="title">${title}</h3>
-                                    <p class="work-about">${work}</p>
+                                    <h3 class="title">${p.title}</h3>
+                                    <p class="work-about">${p.work}</p>
                                     <div class="work-skills">${arr_tags}</div>
+                                    <div class="work-btns${urlbtn}</div>
                                 </div>
                                 <div>
-                                    <div class="work-img" style="background-image: url(images/projects/${ss})">
-                                    <div><img src="images/projects/${ss}" alt=""></div>
+                                    <div class="work-img" style="background-image: url(images/projects/${p.ss})">
+                                    <div><img src="images/projects/${p.ss}" alt=""></div>
                                     </div>
                                 </div>
                             </div></div>`;
@@ -88,49 +95,49 @@ let projects = [
         tags: ["HTML", "CSS", "JS", "Firebase"],
         work: "Full Stack Web Development.",
         ss: "1f.png",
-        url: ""
+        url: "https://aemaheshpandey.netlify.app"
     },
     {
         title: "File Manager",
         tags: ["EJS", "CSS", "NodeJS", "MongoDB"],
         work: "Full Stack File Manager for Global Vidyalay Overseas.",
         ss: "4f.png",
-        url: ""
+        url: "NA"
     },
     {
         title: "WebIpadPro",
         tags: ["HTML", "CSS", "JS"],
         work: "Workable UI design Inspired from IPad.",
         ss: "3f.png",
-        url: ""
+        url: "https://webipadpro.netlify.app"
     },
     {
         title: "Keralaedu",
         tags: ["HTML", "CSS", "JS", "Firebase"],
         work: "Full Stack Web Development Education Website.",
         ss: "2m.png",
-        url: ""
+        url: "https://keralascholars.netlify.app"
     },
     {
-        title: "Project 5",
-        tags: ["Skill1", "Skill2", "Skill3"],
-        work: "Lorem Ipsom to ise Desto ret tostd",
-        ss: "0",
-        url: ""
-    },
-    {
-        title: "Project 6",
-        tags: ["Skill1", "Skill2", "Skill3"],
-        work: "Lorem Ipsom to ise Desto ret tostd",
-        ss: "0",
-        url: ""
+        title: "Delicacy",
+        tags: ["Java", "Swing", "MySQL"],
+        work: "Full Stack Desktop Application for Restaurant.",
+        ss: "5f.png",
+        url: "https://github.com/whoisBugsbunny/delicacy"
+        // },
+        // {
+        //     title: "Resume Builder",
+        //     tags: ["HTML", "CSS", "JavaScript", "Firebase"],
+        //     work: "Resume Builder with Firebase.",
+        //     ss: "0",
+        //     url: "https://aeresume.netlify.app"
     }
 ];
 
 work_box_c = document.getElementById("work-box-c");
 
-projects.forEach((p) => {
-    work_box_c.innerHTML += workBoxEle(p.title, p.tags, p.work, p.ss);
+projects.forEach((project) => {
+    work_box_c.innerHTML += workBoxEle(project);
 });
 
 
