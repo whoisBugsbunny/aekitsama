@@ -68,6 +68,9 @@ function workBoxEle(p) {
     if (p.url == "NA") {
         urlbtn = ` disable-goto">Private Product <i class="fa-solid fa-lock"></i>`;
     }
+    if (p.underdev) {
+        urlbtn = `" onclick="window.open('${p.url}')">Under Development <i class="fa-solid fa-hammer"></i>`;
+    }
 
     let arr_tags = p.tags.map((tag) => {
         return `<span class="skill">${tag}</span>`;
@@ -91,11 +94,11 @@ function workBoxEle(p) {
 
 let projects = [
     {
-        title: "Pandeymahesh.com",
+        title: "maheshpandey.com",
         tags: ["HTML", "CSS", "JS", "Firebase"],
-        work: "Full Stack Web Development.",
+        work: "Full Stack Portfolio Website of Mahesh Pandey.",
         ss: "1f.png",
-        url: "https://aemaheshpandey.netlify.app"
+        url: "https://maheshpandey.com"
     },
     {
         title: "File Manager",
@@ -112,6 +115,13 @@ let projects = [
         url: "https://webipadpro.netlify.app"
     },
     {
+        title: "Delicacy",
+        tags: ["Java", "Swing", "MySQL"],
+        work: "Full Stack Desktop Application for Restaurant.",
+        ss: "5f.png",
+        url: "https://github.com/whoisBugsbunny/delicacy"
+    },
+    {
         title: "Keralaedu",
         tags: ["HTML", "CSS", "JS", "Firebase"],
         work: "Full Stack Web Development Education Website.",
@@ -119,18 +129,19 @@ let projects = [
         url: "https://keralascholars.netlify.app"
     },
     {
-        title: "Delicacy",
-        tags: ["Java", "Swing", "MySQL"],
-        work: "Full Stack Desktop Application for Restaurant.",
-        ss: "5f.png",
-        url: "https://github.com/whoisBugsbunny/delicacy"
-        // },
-        // {
-        //     title: "Resume Builder",
-        //     tags: ["HTML", "CSS", "JavaScript", "Firebase"],
-        //     work: "Resume Builder with Firebase.",
-        //     ss: "0",
-        //     url: "https://aeresume.netlify.app"
+        title: "Code Endeavor",
+        tags: ["HTML", "CSS", "JavaScript"],
+        work: "Frontend Development Code Endeavor Website.",
+        ss: "6f.png",
+        url: "https://codeendeavor.com"
+    }
+    , {
+        title: "Resume Builder",
+        tags: ["HTML", "CSS", "JavaScript", "Firebase"],
+        work: "Resume Builder with Firebase.",
+        ss: "7f.png",
+        url: "https://aeresume.netlify.app",
+        underdev: true
     }
 ];
 

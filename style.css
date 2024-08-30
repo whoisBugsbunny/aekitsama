@@ -66,8 +66,12 @@ html {
 	color: var(--ter);
 }
 @font-face {
-	font-family: theSuavity;
-	src: url(fonts/theSuavity.ttf);
+	font-family: "theSuavity";
+	src: url("/fonts/theSuavity.woff2") format("woff2"),
+		url("/fonts/theSuavity.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 .font0 {
@@ -625,9 +629,9 @@ html {
 .work-box :last-child {
 	flex: 2;
 }
-.work-box:hover {
+/* .work-box:hover {
 	cursor: pointer;
-}
+} */
 .work-box > div > :nth-child(2),
 .work-box > div > :nth-child(3) {
 	font-size: 1.5rem;
@@ -647,6 +651,7 @@ html {
 	font-weight: 600;
 }
 .work-btns {
+	cursor: pointer;
 	background: var(--sec);
 	padding: 10px 20px;
 	border-radius: 5px;
@@ -657,6 +662,12 @@ html {
 .disable-goto {
 	cursor: not-allowed;
 	opacity: 0.5;
+}
+@media (min-width: 900px) {
+	.work-box-c {
+		/* to be removed */
+		padding: 0px 10px 0px;
+	}
 }
 @media (max-width: 900px) {
 	.work-box {
@@ -696,7 +707,7 @@ html {
 	height: 32rem;
 	padding: 30px;
 	overflow: hidden;
-	backdrop-filter: blur(20px);
+	backdrop-filter: blur(10px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
