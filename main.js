@@ -1,4 +1,5 @@
 textarea = document.getElementById("text-area");
+
 const deftext = "Ankit Sharma a web developer, and a programmer loves designing";
 let repeatedName = "";
 for (let i = 0; i < 350; i++) {
