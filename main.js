@@ -61,18 +61,16 @@ for (let i = 0; i < 550; i++) {
 }
 
 function workBoxEle(p) {
-    if (p.ss == "0") {
+    if (!p.ss) {
         p.ss = "loading.gif";
     }
-
     let urlbtn = `" onclick="window.open('${p.url}')">Goto <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-    if (p.url == "NA") {
+    if (!p.url) {
         urlbtn = ` disable-goto">Private Product <i class="fa-solid fa-lock"></i>`;
     }
     if (p.underdev) {
         urlbtn = `" onclick="window.open('${p.url}')">Under Development <i class="fa-solid fa-hammer"></i>`;
     }
-
     let arr_tags = p.tags.map((tag) => {
         return `<span class="skill">${tag}</span>`;
     }).join(" / ");
@@ -99,42 +97,48 @@ let projects = [
         tags: ["HTML", "CSS", "JS", "Firebase"],
         work: "Full Stack Portfolio Website of Mahesh Pandey.",
         ss: "1f.png",
-        url: "https://maheshpandey.com"
+        url: "https://maheshpandey.com",
+        visible: true
     },
     {
         title: "File Manager",
         tags: ["EJS", "CSS", "NodeJS", "MongoDB"],
         work: "Full Stack File Manager for Global Vidyalay Overseas.",
         ss: "4f.png",
-        url: "NA"
+        url: "",
+        visible: true
     },
     {
         title: "WebIpadPro",
         tags: ["HTML", "CSS", "JS"],
         work: "Workable UI design Inspired from IPad.",
         ss: "3f.png",
-        url: "https://webipadpro.netlify.app"
+        url: "https://webipadpro.netlify.app",
+        visible: true
     },
     {
         title: "Delicacy",
         tags: ["Java", "Swing", "MySQL"],
         work: "Full Stack Desktop Application for Restaurant.",
         ss: "5f.png",
-        url: "https://github.com/whoisBugsbunny/delicacy"
+        url: "https://github.com/whoisBugsbunny/delicacy",
+        visible: true
     },
     {
         title: "Keralaedu",
         tags: ["HTML", "CSS", "JS", "Firebase"],
         work: "Full Stack Web Development Education Website.",
         ss: "2m.png",
-        url: "https://keralascholars.netlify.app"
+        url: "https://keralascholars.netlify.app",
+        visible: true
     },
     {
         title: "Code Endeavor",
         tags: ["HTML", "CSS", "JavaScript"],
         work: "Frontend Development Code Endeavor Website.",
         ss: "6f.png",
-        url: "https://codeendeavor.com"
+        url: "https://codeendeavor.com",
+        visible: true
     }
     , {
         title: "Resume Builder",
@@ -142,16 +146,19 @@ let projects = [
         work: "Resume Builder with Firebase.",
         ss: "7f.png",
         url: "https://aeresume.netlify.app",
-        underdev: true
+        underdev: true,
+        visible: true
     }
 ];
 
 work_box_c = document.getElementById("work-box-c");
 
-projects.forEach((project) => {
-    work_box_c.innerHTML += workBoxEle(project);
-});
-
+function setWorks(Projects) { /* convert this function into single code if problem when go online & Projects to projects */
+    work_box_c.innerHTML = '';
+    Projects.forEach((project) => {
+        if (project.visible == true) work_box_c.innerHTML += workBoxEle(project);
+    });
+}
 
 homeBtn = document.getElementById("home-btn");
 homePg = document.getElementById("home-page");
@@ -181,12 +188,14 @@ homeBtn.addEventListener('click', () => {
 
 workBtn.addEventListener('click', () => {
     removeActiveClass();
+    setWorks(projects);
     workBtn.classList.add('active');
     showPg(workPg);
 });
 
 contactBtn.addEventListener('click', () => {
     removeActiveClass();
+    setContacts(Contacts);
     contactBtn.classList.add('active');
     showPg(contactPg);
 });
@@ -197,3 +206,27 @@ shutterBack.addEventListener('click', () => {
     shutter.scrollTop = 0;
 });
 
+contactInfo = document.getElementById("contact-info");
+
+let Contacts = [
+    { url: "mailto:aankitsharmaa422@gmail.com", icon: "fa-solid fa-envelope", text: "aankitsharmaa422@gmail.com", visible: true },
+    { url: "https://www.linkedin.com/in/aekit", icon: "fa-brands fa-linkedin-in", text: "aekit", visible: true },
+    { url: "https://github.com/whoisbugsbunny", icon: "fa-brands fa-github", text: "whoisbugsbunny", visible: true },
+    { url: "https://codepen.io/aekit", icon: "fa-brands fa-codepen", text: "aekit", visible: true },
+    { url: "https://twitter.com/", icon: "fa-brands fa-x-twitter", text: "Ankit Sharma", visible: true }
+]
+
+function setContacts(Infos) {
+    contactInfo.innerHTML = '';
+    Infos.forEach((info) => { if (info.visible == true) contactInfo.innerHTML += setContactsInfo(info) });
+}
+
+function setContactsInfo(info) {
+    let infoBox = `<div class="contact-opt">
+                        <div class="contact-outer" onclick="window.open('${info.url}')">
+                            <span class="contact-icon"><i class="${info.icon}"></i></span>
+                            <span class="contact-text">${info.text}</span>
+                        </div>
+                    </div>`;
+    return infoBox;
+}
