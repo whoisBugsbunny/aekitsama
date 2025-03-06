@@ -429,7 +429,7 @@ html {
 	/* font-family: "Roboto Mono", monospace; */
 	height: 600px;
 	width: 600px;
-	background: url(images/me1.png);
+	/* background: url(images/me1.png);	 */
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -439,6 +439,14 @@ html {
 	-webkit-text-fill-color: transparent;
 	background-clip: text; /* for safari */
 	-webkit-background-clip: text;
+}
+.text-area-backimage {
+	background-image: url(images/me1.png);
+}
+@media (max-width: 530px) {
+	.text-area-backimage {
+		background-image: url(images/me1f.png);
+	}
 }
 .flicker-animation-ts {
 	animation: flicker 2s 2s alternate;
@@ -507,15 +515,16 @@ html {
 	pointer-events: none;
 	height: 100%;
 	position: absolute;
-	width: 100%;
+	width: calc(100% + 50px);
 	display: flex;
 	z-index: 10;
 }
 .grid-container {
 	/* pointer-events: none; */
+	/* justify-content: center; */
+	width: 100%;
 	height: 100%;
 	position: relative;
-	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	align-content: flex-start;

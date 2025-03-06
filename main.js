@@ -62,7 +62,7 @@ for (let i = 0; i < 550; i++) {
 
 function workBoxEle(p) {
     if (!p.ss) {
-        p.ss = "loading.gif";
+        p.ss = "NoImg.jpg";
     }
     let urlbtn = `" onclick="window.open('${p.url}')">Goto <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
     if (!p.url) {
