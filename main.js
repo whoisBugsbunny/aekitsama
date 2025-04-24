@@ -1,11 +1,8 @@
 textarea = document.getElementById("text-area");
 
 const deftext = "Ankit Sharma a web developer, and a programmer loves designing";
-let repeatedName = "";
-for (let i = 0; i < 350; i++) {
-    repeatedName += deftext + " ";
-}
-textarea.innerHTML = repeatedName;
+const repeatedText = Array(350).fill(deftext).join(" ");
+textarea.textContent = repeatedText;
 
 setTimeout(() => {
     textarea.classList.remove('flicker-animation-ts');
@@ -61,34 +58,50 @@ for (let i = 0; i < 550; i++) {
 }
 
 function workBoxEle(p) {
-    if (!p.ss) {
-        p.ss = "NoImg.jpg";
-    }
-    let urlbtn = `" onclick="window.open('${p.url}')">Goto <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-    if (!p.url) {
-        urlbtn = ` disable-goto">Private Product <i class="fa-solid fa-lock"></i>`;
-    }
-    if (p.underdev) {
-        urlbtn = `" onclick="window.open('${p.url}')">Under Development <i class="fa-solid fa-hammer"></i>`;
-    }
-    let arr_tags = p.tags.map((tag) => {
-        return `<span class="skill">${tag}</span>`;
-    }).join(" / ");
+    const workBox = document.createElement('div');
+    workBox.className = 'work-box';
 
-    let work_box_ele = `<div><div class="work-box">
-                                <div>
-                                    <h3 class="title">${p.title}</h3>
-                                    <p class="work-about">${p.work}</p>
-                                    <div class="work-skills">${arr_tags}</div>
-                                    <div class="work-btns${urlbtn}</div>
-                                </div>
-                                <div>
-                                    <div class="work-img" style="background-image: url(images/projects/${p.ss})">
-                                    <div><img src="images/projects/${p.ss}" alt=""></div>
-                                    </div>
-                                </div>
-                            </div></div>`;
-    return work_box_ele;
+    const leftDiv = document.createElement('div');
+    const title = document.createElement('h3');
+    title.className = 'title';
+    title.textContent = p.title;
+
+    const about = document.createElement('p');
+    about.className = 'work-about';
+    about.textContent = p.work;
+
+    const skills = document.createElement('div');
+    skills.className = 'work-skills';
+    skills.innerHTML = p.tags.map(tag => `<span class="skill">${tag}</span>`).join(' / ');
+
+    const button = document.createElement('div');
+    button.className = `work-btns${p.url ? '' : ' disable-goto'}`;
+    button.innerHTML = p.url
+        ? `Goto <i class="fa-solid fa-arrow-up-right-from-square"></i>`
+        : `Private Product <i class="fa-solid fa-lock"></i>`;
+    if (p.url) button.onclick = () => window.open(p.url);
+
+    leftDiv.append(title, about, skills, button);
+
+    const rightDiv = document.createElement('div');
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'work-img';
+    imgDiv.style.backgroundImage = `url(images/projects/${p.ss || 'NoImg.jpg'})`;
+
+    const img = document.createElement('img');
+    img.src = `images/projects/${p.ss || 'NoImg.jpg'}`;
+    img.alt = p.title;
+
+    const imgContainer = document.createElement('div');
+    imgContainer.appendChild(img);
+    imgDiv.appendChild(imgContainer);
+    rightDiv.appendChild(imgDiv);
+
+    workBox.append(leftDiv, rightDiv);
+
+    const workBoxEle = document.createElement('div');
+    workBoxEle.appendChild(workBox);
+    return workBoxEle;
 }
 
 let projects = [
@@ -156,7 +169,9 @@ work_box_c = document.getElementById("work-box-c");
 function setWorks(Projects) { /* convert this function into single code if problem when go online & Projects to projects */
     work_box_c.innerHTML = '';
     Projects.forEach((project) => {
-        if (project.visible == true) work_box_c.innerHTML += workBoxEle(project);
+        if (project.visible) {
+            work_box_c.appendChild(workBoxEle(project));
+        }
     });
 }
 
@@ -218,15 +233,30 @@ let Contacts = [
 
 function setContacts(Infos) {
     contactInfo.innerHTML = '';
-    Infos.forEach((info) => { if (info.visible == true) contactInfo.innerHTML += setContactsInfo(info) });
+    Infos.forEach((info) => {
+        if (info.visible)
+            contactInfo.appendChild(setContactsInfo(info))
+    });
 }
 
 function setContactsInfo(info) {
-    let infoBox = `<div class="contact-opt">
-                        <div class="contact-outer" onclick="window.open('${info.url}')">
-                            <span class="contact-icon"><i class="${info.icon}"></i></span>
-                            <span class="contact-text">${info.text}</span>
-                        </div>
-                    </div>`;
-    return infoBox;
+    const contactOpt = document.createElement('div');
+    contactOpt.className = 'contact-opt';
+
+    const contactOuter = document.createElement('div');
+    contactOuter.className = 'contact-outer';
+    contactOuter.onclick = () => window.open(info.url);
+
+    const contactIcon = document.createElement('span');
+    contactIcon.className = 'contact-icon';
+    contactIcon.innerHTML = `<i class="${info.icon}"></i>`;
+
+    const contactText = document.createElement('span');
+    contactText.className = 'contact-text';
+    contactText.textContent = info.text;
+
+    contactOuter.append(contactIcon, contactText);
+    contactOpt.appendChild(contactOuter);
+
+    return contactOpt;
 }
