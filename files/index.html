@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ae Files</title>
+    <link rel="stylesheet" href="filesStyle.css">
+
+    <link rel="icon" href="/images/me_red2_circle.jpg" type="image/x-icon">
+
+    <!-- font awesome 6.6.0 icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="body">
+        <div class="filesPage">
+
+            <!-- left -->
+            <div class="table-container">
+                <div class="table">
+                    <div class="table-header">
+                        <div class="row">
+                            <div class="col file-type-col"></div>
+                            <div class="col">File Name</div>
+                            <div class="col col-date-size">Size</div>
+                            <div class="col col-date-size">Upload Date</div>
+                            <div class="col col-action">Actions</div>
+                        </div>
+                    </div>
+                    <div class="table-contents" id="tableContent">
+                        <!-- table content -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- right -->
+            <div class="upload-container">
+                <div class="previewBlock upload" id="previewBlock">
+                    <div class="files-stats" id="filesStats">
+                        <div class="files-stats-content">
+                            <div class="files-stats-content-item"><span id="totalFiles">0</span> Files</div>
+                            <div class="files-stats-content-item"><span id="totalSize">0</span> MB</div>
+                            <div class="files-stats-content-item">
+                                <span id="totalPPT">0</span> PPT
+                            </div>
+                            <div class="files-stats-content-item"><span id="totalPDF">0</span> PDF</div>
+                            <div class="files-stats-content-item"><span id="totalDOCX">0</span> DOCX</div>
+                            <div class="files-stats-content-item"><span id="totalXLSX">0</span> XLSX</div>
+                            <div class="files-stats-content-item"><span id="totalZIP">0</span> ZIP</div>
+                            <div class="files-stats-content-item"><span id="totalCSV">0</span> CSV</div>
+                            <div class="files-stats-content-item"><span id="totalTXT">0</span> TXT</div>
+                            <div class="files-stats-content-item"><span id="totalImages">0</span> Images</div>
+                            <div class="files-stats-content-item"><span id="totalOthers">0</span> Others
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload" style="height: fit-content;">
+                    <div class="upload-header" id="uploadHeader">
+                        <i class="fa-solid fa-cloud-upload"></i>
+                        <p>Select File to Upload</p>
+                    </div>
+                    <div class="upload-form">
+                        <input type="file" id="fileInput" class="hide" accept="*" multiple>
+                        <label for="fileInput" class="upload-options custom-file-upload">
+                            <i class="fa-solid fa-folder-open uploadIcon"></i> <span>Choose File</span>
+                        </label>
+                        <div id="uploadBtn" class="upload-options upload-btn"><i class="fa-solid fa-upload uploadIcon"></i> <span>Upload</span></div>
+                    </div>
+                    <div id="uploadStatus" class="upload-status"></div>
+                    <div id="uploadProgress" class="upload-progress"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="fileSys.js"></script>
+
+</html>
