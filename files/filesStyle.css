@@ -87,7 +87,7 @@ html {
 		height: 65vh !important;
 	}
 }
-@media (max-width: 870px) and (min-width: 450px) {
+@media (max-width: 955px) and (min-width: 450px) {
 	.upload-container {
 		height: 98vh !important;
 	}
@@ -178,6 +178,11 @@ html {
 }
 .upload-preview {
 }
+.disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	/* pointer-events: none; */
+}
 .uploadIcon {
 	color: #f2f2f2;
 	font-size: 50px;
@@ -263,4 +268,93 @@ html {
 }
 .files-stats {
 	padding: 10px;
+}
+
+/* terminal */
+.terminal {
+	font-family: monospace;
+	background-color: #111;
+	color: var(--low-white-1);
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	overflow: hidden;
+	/* box-shadow: 0 0 20px #00ff00; */
+	display: flex;
+	flex-direction: column;
+}
+
+.terminal-header {
+	background-color: #222;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.terminal-buttons {
+	display: flex;
+	gap: 8px;
+}
+
+.terminal-buttons span {
+	cursor: pointer;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.terminal-close {
+	background-color: #ff5f56;
+}
+
+.terminal-minimize {
+	background-color: #ffbd2e;
+}
+
+.terminal-maximize {
+	background-color: #27c93f;
+}
+
+.terminal-title {
+	font-size: 14px;
+	color: #aaa;
+}
+
+.terminal-body {
+	padding: 20px;
+	overflow-y: auto;
+	flex: 1;
+}
+
+.terminal-line {
+	margin: 0;
+	line-height: 1.5;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.terminal-prompt {
+	color: var(--neo-red);
+	margin-right: 10px;
+}
+
+.terminal-cursor {
+	display: inline-block;
+	width: 8px;
+	height: 16px;
+	background-color: var(--neo-red);
+	animation: blink 1s step-start 0s infinite;
+}
+
+@keyframes blink {
+	50% {
+		background-color: transparent;
+	}
+}
+
+.terminal-input {
+	display: inline;
 }

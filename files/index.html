@@ -16,6 +16,7 @@
 
 <body>
     <div class="body">
+
         <div class="filesPage">
 
             <!-- left -->
@@ -39,24 +40,22 @@
             <!-- right -->
             <div class="upload-container">
                 <div class="previewBlock upload" id="previewBlock">
-                    <div class="files-stats" id="filesStats">
-                        <div class="files-stats-content">
-                            <div class="files-stats-content-item"><span id="totalFiles">0</span> Files</div>
-                            <div class="files-stats-content-item"><span id="totalSize">0</span> MB</div>
-                            <div class="files-stats-content-item">
-                                <span id="totalPPT">0</span> PPT
+
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-close"></span>
+                                <span class="terminal-minimize"></span>
+                                <span class="terminal-maximize"></span>
                             </div>
-                            <div class="files-stats-content-item"><span id="totalPDF">0</span> PDF</div>
-                            <div class="files-stats-content-item"><span id="totalDOCX">0</span> DOCX</div>
-                            <div class="files-stats-content-item"><span id="totalXLSX">0</span> XLSX</div>
-                            <div class="files-stats-content-item"><span id="totalZIP">0</span> ZIP</div>
-                            <div class="files-stats-content-item"><span id="totalCSV">0</span> CSV</div>
-                            <div class="files-stats-content-item"><span id="totalTXT">0</span> TXT</div>
-                            <div class="files-stats-content-item"><span id="totalImages">0</span> Images</div>
-                            <div class="files-stats-content-item"><span id="totalOthers">0</span> Others
-                            </div>
+                            <div class="terminal-title">Dir_Terminal</div>
+                        </div>
+                        <div class="terminal-body" id="terminalBody">
+                            <p class="terminal-line">Welcome to the Terminal!</p>
+                            <p class="terminal-line"><span class="terminal-prompt">aekitsama/home $ </span> <span class="terminal-input" id="terminalInput"></span><span class="terminal-cursor" id="terminalCursor"></span></p>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="upload" style="height: fit-content;">
@@ -69,7 +68,7 @@
                         <label for="fileInput" class="upload-options custom-file-upload">
                             <i class="fa-solid fa-folder-open uploadIcon"></i> <span>Choose File</span>
                         </label>
-                        <div id="uploadBtn" class="upload-options upload-btn"><i class="fa-solid fa-upload uploadIcon"></i> <span>Upload</span></div>
+                        <div id="uploadBtn" class="upload-options upload-btn disabled"><i class="fa-solid fa-upload uploadIcon"></i> <span>Upload</span></div>
                     </div>
                     <div id="uploadStatus" class="upload-status"></div>
                     <div id="uploadProgress" class="upload-progress"></div>
